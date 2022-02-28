@@ -1,5 +1,5 @@
 FROM node:latest
-WORKDIR /package.json
+ADD package.json
 RUN npm install 
 EXPOSE 4000
 CMD ["npm", "start"]
