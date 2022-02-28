@@ -1,10 +1,6 @@
 FROM node:latest
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
-COPY package.json /usr/src/app/
+WORKDIR package.json
 RUN npm install 
-ADD src /usr/src/app/src
-ADD public /usr/src/app/public
 EXPOSE 4000
 CMD ["npm", "start"]
 
