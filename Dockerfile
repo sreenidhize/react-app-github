@@ -1,7 +1,14 @@
-FROM node:latest
-RUN mkdir /user
-ADD package.json /user
-WORKDIR /user
+FROM node:16-alpine 
+
+COPY ["package.json", "package-lock.json*", "./"]
+
 RUN npm install 
-EXPOSE 4000
-CMD ["npm", "start"]
+
+RUN mkdir /app 
+RUN mv ./node_modules ./app
+
+WORKDIR /app
+
+COPY . .
+
+CMD [ "npm", "start" ]
